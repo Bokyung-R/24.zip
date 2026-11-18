@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 import regions from '../data/regions.json';
 import RegionMap from '../components/region/RegionMap';
+import StepProgress from '../components/common/StepProgress';
 
 import './RegionCompare.css';
 
@@ -15,46 +16,72 @@ const scoreLabels = [
   { key: 'environment', label: '환경' }
 ];
 
+// 존재하는 지역 ID만 사용
+const validRegionIds = regions.map((region) => region.id);
+
+// 금액 표시
+const formatBudget = (value) => {
+  if (value === '' || value === null || value === undefined) {
+    return '정보 없음';
+  }
+
+  return `${Number(value).toLocaleString('ko-KR')}만 원`;
+};
+
 function RegionCompare() {
   const navigate = useNavigate();
   const location = useLocation();
   const { userData, updateUserData } = useUser();
 
-  const recommendedIds =
-    location.state?.recommendedRegions || [];
+  // 추천 화면에서 전달받은 지역 ID
+  const recommendedIds = useMemo(() => {
+    const ids = location.state?.recommendedRegions || [];
 
+    return ids.filter((id) => validRegionIds.includes(id));
+  }, [location.state]);
+
+  // 처음 선택할 지역 설정
   const [selectedIds, setSelectedIds] = useState(() => {
-    const savedIds = userData.selectedRegions || [];
+    const savedIds = (userData.selectedRegions || [])
+      .filter((id) => validRegionIds.includes(id));
 
     const initialIds = recommendedIds.length > 0
       ? recommendedIds
       : savedIds;
 
-    return initialIds.slice(0, 3);
+    return [...new Set(initialIds)].slice(0, 3);
   });
 
+  // 상세 정보를 표시할 지역
   const [activeRegionId, setActiveRegionId] = useState(
-    recommendedIds[0] || selectedIds[0] || null
+    () => recommendedIds[0] || selectedIds[0] || null
   );
 
   const [error, setError] = useState('');
 
+  // 선택된 지역 객체
   const selectedRegions = useMemo(
     () => regions.filter((region) => selectedIds.includes(region.id)),
     [selectedIds]
   );
 
+  // 현재 상세 정보 지역
   const activeRegion = regions.find(
     (region) => region.id === activeRegionId
   );
 
-
+  // 지역 선택 및 해제
   const handleSelectRegion = useCallback((regionId) => {
+    if (!validRegionIds.includes(regionId)) {
+      return;
+    }
+
     if (selectedIds.includes(regionId)) {
       const next = selectedIds.filter((id) => id !== regionId);
 
       setSelectedIds(next);
 
+      // 현재 상세 정보 지역을 해제했다면 다른 선택 지역으로 변경
       if (activeRegionId === regionId) {
         setActiveRegionId(next[0] || null);
       }
@@ -63,17 +90,27 @@ function RegionCompare() {
       return;
     }
 
+    // 최대 3개 선택 제한
     if (selectedIds.length >= 3) {
       setError('지역은 최대 3개까지 선택할 수 있습니다.');
       return;
     }
 
-    setSelectedIds((prev) => [...prev, regionId]);
+    const next = [...selectedIds, regionId];
+
+    setSelectedIds(next);
     setActiveRegionId(regionId);
     setError('');
   }, [selectedIds, activeRegionId]);
 
+  // 추천 순위 표시
+  const getRank = (regionId) => {
+    const index = recommendedIds.indexOf(regionId);
 
+    return index >= 0 ? index + 1 : null;
+  };
+
+  // 다음 화면으로 이동
   const handleContinue = () => {
     if (selectedRegions.length === 0) {
       setError('관심 지역을 하나 이상 선택해 주세요.');
@@ -81,27 +118,22 @@ function RegionCompare() {
     }
 
     updateUserData({
-      selectedRegions: selectedIds
+      selectedRegions: selectedRegions.map((region) => region.id),
+      welfareRegions: selectedRegions.map((region) => region.id)
     });
 
-    navigate('/housing', {
+    navigate('/support-info', {
       state: {
-        selectedRegions: selectedIds
+        selectedRegions: selectedRegions.map((region) => region.id)
       }
     });
-  };
-
-  const getRank = (regionId) => {
-    const index = recommendedIds.indexOf(regionId);
-
-    return index >= 0 ? index + 1 : null;
   };
 
   return (
     <main className="region-compare-page">
       <div className="region-compare-container">
 
-        {/* Heading */}
+        {/* 페이지 제목 */}
         <section className="region-compare-heading">
           <span className="region-eyebrow">
             EXPLORE SEOUL
@@ -120,36 +152,10 @@ function RegionCompare() {
           </p>
         </section>
 
-        {/* Progress */}
-        <div className="region-step-progress">
-          <div className="region-step completed">
-            <span>✓</span>
-            <strong>조건 입력</strong>
-          </div>
+        {/* 진행 단계 */}
+        <StepProgress currentStep={3} />
 
-          <div className="region-step-line" />
-
-          <div className="region-step completed">
-            <span>✓</span>
-            <strong>지역 추천</strong>
-          </div>
-
-          <div className="region-step-line" />
-
-          <div className="region-step active">
-            <span>3</span>
-            <strong>지역 비교</strong>
-          </div>
-
-          <div className="region-step-line" />
-
-          <div className="region-step">
-            <span>4</span>
-            <strong>주택 선택</strong>
-          </div>
-        </div>
-
-        {/* Map Section */}
+        {/* 지도 영역 */}
         <section className="region-map-section">
           <div className="section-title-row">
             <div>
@@ -163,6 +169,7 @@ function RegionCompare() {
             </div>
           </div>
 
+          {/* 지도 범례 */}
           <div className="map-legend">
             <span>
               <i className="legend-dot recommended" />
@@ -193,12 +200,13 @@ function RegionCompare() {
           </p>
         </section>
 
-        {/* District List */}
+        {/* 자치구 목록 */}
         <section className="district-section">
           <div className="section-title-row">
             <div>
               <span>REGION LIST</span>
               <h2>관심 지역 선택</h2>
+              <p>비교하고 싶은 지역을 선택해 주세요.</p>
             </div>
           </div>
 
@@ -235,7 +243,7 @@ function RegionCompare() {
           </div>
         </section>
 
-        {/* Active Region Detail */}
+        {/* 선택 지역 상세 정보 */}
         {activeRegion && (
           <section className="active-region-section">
             <div className="section-title-row">
@@ -250,7 +258,7 @@ function RegionCompare() {
             </p>
 
             <div className="active-region-tags">
-              {activeRegion.tags.map((tag) => (
+              {(activeRegion.tags || []).map((tag) => (
                 <span key={tag}># {tag}</span>
               ))}
             </div>
@@ -259,13 +267,18 @@ function RegionCompare() {
               <div>
                 <span>예시 보증금</span>
                 <strong>
-                  {activeRegion.sampleDeposit.toLocaleString('ko-KR')}만 원
+                  {formatBudget(activeRegion.sampleDeposit)}
                 </strong>
               </div>
 
               <div>
                 <span>예시 월세</span>
-                <strong>{activeRegion.sampleRent}만 원</strong>
+                <strong>
+                  {activeRegion.sampleRent !== undefined &&
+                  activeRegion.sampleRent !== null
+                    ? `${activeRegion.sampleRent}만 원`
+                    : '정보 없음'}
+                </strong>
               </div>
             </div>
 
@@ -281,7 +294,7 @@ function RegionCompare() {
           </section>
         )}
 
-        {/* Comparison */}
+        {/* 지역별 비교 */}
         <section className="comparison-section">
           <div className="section-title-row">
             <div>
@@ -303,7 +316,9 @@ function RegionCompare() {
                     <th>평가 항목</th>
 
                     {selectedRegions.map((region) => (
-                      <th key={region.id}>{region.name}</th>
+                      <th key={region.id}>
+                        {region.name}
+                      </th>
                     ))}
                   </tr>
                 </thead>
@@ -315,8 +330,13 @@ function RegionCompare() {
 
                       {selectedRegions.map((region) => (
                         <td key={region.id}>
-                          <strong>{region.scores[item.key]}</strong>
-                          <span>점</span>
+                          <strong>
+                            {region.scores?.[item.key] ?? '-'}
+                          </strong>
+
+                          {region.scores?.[item.key] !== undefined && (
+                            <span>점</span>
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -327,7 +347,7 @@ function RegionCompare() {
 
                     {selectedRegions.map((region) => (
                       <td key={region.id}>
-                        {region.sampleDeposit.toLocaleString('ko-KR')}만 원
+                        {formatBudget(region.sampleDeposit)}
                       </td>
                     ))}
                   </tr>
@@ -337,7 +357,10 @@ function RegionCompare() {
 
                     {selectedRegions.map((region) => (
                       <td key={region.id}>
-                        {region.sampleRent}만 원
+                        {region.sampleRent !== undefined &&
+                        region.sampleRent !== null
+                          ? `${region.sampleRent}만 원`
+                          : '정보 없음'}
                       </td>
                     ))}
                   </tr>
@@ -347,22 +370,25 @@ function RegionCompare() {
           )}
         </section>
 
-        {/* Notice */}
+        {/* 데이터 안내 */}
         <div className="region-data-notice">
           <strong>ⓘ 데이터 안내</strong>
           <p>
-            지역별 점수와 예시 주거비는 현재 테스트 데이터입니다.
-            실제 통계나 매물 시세를 의미하지 않습니다.
+            현재 지역별 점수와 예시 주거비는 서비스 시연을 위한
+            테스트 데이터입니다. 실제 통계나 매물 시세를 의미하지 않습니다.
+            지역별 평가 점수는 기본 지표이며, 앞선 추천 화면의 예산 조정
+            점수와는 다를 수 있습니다.
           </p>
         </div>
 
+        {/* 오류 메시지 */}
         {error && (
           <p className="region-error" role="alert">
             {error}
           </p>
         )}
 
-        {/* Actions */}
+        {/* 하단 버튼 */}
         <div className="region-actions">
           <button
             type="button"

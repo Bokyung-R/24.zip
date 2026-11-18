@@ -35,49 +35,6 @@
   line-height: 1.8;
 }
 
-/* Step Progress */
-.step-progress {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 35px;
-}
-
-.step-progress-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #94A3B8;
-  font-size: 13px;
-}
-
-.step-progress-item > span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #E2E8F0;
-  font-weight: 700;
-}
-
-.step-progress-item.active {
-  color: var(--color-primary);
-}
-
-.step-progress-item.active > span {
-  background: var(--color-primary);
-  color: white;
-}
-
-.step-progress-line {
-  width: 45px;
-  height: 1px;
-  background: #CBD5E1;
-}
-
 /* Form Cards */
 .condition-form {
   display: flex;
@@ -367,6 +324,11 @@
   text-align: center;
 }
 
+.choice-button,
+.priority-option {
+  cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .condition-page {
@@ -383,24 +345,6 @@
 
   .condition-card-heading h2 {
     font-size: 17px;
-  }
-
-  .step-progress {
-    gap: 7px;
-  }
-
-  .step-progress-item {
-    gap: 5px;
-    font-size: 11px;
-  }
-
-  .step-progress-item > span {
-    width: 25px;
-    height: 25px;
-  }
-
-  .step-progress-line {
-    width: 18px;
   }
 
   .choice-grid {
@@ -426,5 +370,28 @@
   .back-button {
     padding: 0 16px;
     font-size: 13px;
+  }
+}
+
+
+.reset-button {
+  display: block;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.reset-button:hover {
+  color: #e65c5c;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .reset-button {
+    font-size: 12px;
   }
 }

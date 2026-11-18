@@ -548,3 +548,27 @@
     min-height: 48px;
   }
 }
+
+/* 추천 결과가 없을 때 */
+.recommendation-empty {
+  padding: 48px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.recommendation-empty h3 {
+  margin-bottom: 10px;
+}
+
+.recommendation-empty p {
+  margin-bottom: 24px;
+  color: #6b7280;
+}
+
+/* 비활성 버튼 */
+.recommendation-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

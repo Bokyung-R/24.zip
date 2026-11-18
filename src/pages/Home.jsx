@@ -1,12 +1,17 @@
 
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
 function Home() {
   const navigate = useNavigate();
+  const { resetUserData } = useUser();
 
+  // 기존 입력 데이터를 유지하고 시작
   const handleStart = () => {
     navigate('/condition');
   };
+
+ 
 
   return (
     <main>
@@ -35,6 +40,7 @@ function Home() {
             나에게 맞는 주거 찾기
             <span>→</span>
           </button>
+
 
           <div className="hero-caption">
             나의 조건을 입력하고 맞춤형 주거 솔루션을 만나보세요.
@@ -84,7 +90,7 @@ function Home() {
             <h3>지역별 주거 정보</h3>
             <p>
               관심 지역의 주거 환경과 생활 정보를
-              비교하고 확인할 수 있습니다.
+              비교하고 복지 확인 지역을 선택할 수 있습니다.
             </p>
           </article>
 
@@ -102,13 +108,13 @@ function Home() {
       <section className="process-section">
         <div className="section-heading">
           <span>HOW IT WORKS</span>
-          <h2>간단한 4단계로 시작하세요.</h2>
+          <h2>간단한 5단계로 시작하세요.</h2>
         </div>
 
         <div className="process-grid">
           <div className="process-item">
             <span>01</span>
-            <strong>조건 입력</strong>
+            <strong>주거 조건 입력</strong>
             <p>예산과 생활 조건 입력</p>
           </div>
 
@@ -120,14 +126,20 @@ function Home() {
 
           <div className="process-item">
             <span>03</span>
-            <strong>혜택 확인</strong>
-            <p>주거복지 지원사업 매칭</p>
+            <strong>지역 선택</strong>
+            <p>복지 확인 지역 선택</p>
           </div>
 
           <div className="process-item">
             <span>04</span>
-            <strong>신청 준비</strong>
-            <p>필요 서류와 신청 정보 확인</p>
+            <strong>지원 정보 입력</strong>
+            <p>나이와 소득 등 기본 정보 입력</p>
+          </div>
+
+          <div className="process-item">
+            <span>05</span>
+            <strong>혜택 확인</strong>
+            <p>지역별 지원사업 매칭 결과 확인</p>
           </div>
         </div>
       </section>

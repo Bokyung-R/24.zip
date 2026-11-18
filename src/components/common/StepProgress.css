@@ -1,0 +1,122 @@
+
+.step-progress {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e8edf3;
+}
+
+.step-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.step-progress-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #123c65;
+}
+
+.step-progress-count {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.step-progress-bar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step-progress-item {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-progress-line {
+  position: absolute;
+  top: 16px;
+  left: -50%;
+  width: 100%;
+  height: 3px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+.step-progress-item:first-child .step-progress-line {
+  display: none;
+}
+
+.step-progress-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+  z-index: 1;
+  position: relative;
+}
+
+.step-progress-label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step-progress-item.active .step-progress-circle,
+.step-progress-item.completed .step-progress-circle {
+  background: #123c65;
+  color: #ffffff;
+}
+
+.step-progress-item.active .step-progress-label,
+.step-progress-item.completed .step-progress-label {
+  color: #123c65;
+  font-weight: 700;
+}
+
+.step-progress-item.completed .step-progress-line {
+  background: #123c65;
+}
+
+@media (max-width: 600px) {
+  .step-progress {
+    padding: 16px 10px;
+    margin-bottom: 24px;
+  }
+
+  .step-progress-label {
+    font-size: 10px;
+    white-space: normal;
+    word-break: keep-all;
+  }
+
+  .step-progress-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .step-progress-line {
+    top: 13px;
+  }
+
+  .step-progress-header {
+    margin-bottom: 20px;
+  }
+}

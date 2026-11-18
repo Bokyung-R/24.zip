@@ -2,12 +2,11 @@
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
-
+import StepProgress from '../components/common/StepProgress';
 import policies from '../data/policies.json';
 
 import {
   evaluateAllPolicies,
-  getStatusLabel,
   getIncomeLabel,
 } from '../services/eligibilityService';
 
@@ -52,12 +51,10 @@ function MatchingResult() {
     (item) => item.status === 'ineligible'
   ).length;
 
-  const selectedResult = location.state?.selectedResult;
 
-  const handleBack = () => {
-    navigate('/eligibility');
-  };
-
+const handleBack = () => {
+  navigate('/support-info');
+};
   const handleRestart = () => {
     navigate('/condition');
   };
@@ -66,16 +63,7 @@ function MatchingResult() {
     <main className="matching-page">
       <div className="matching-container">
         {/* 진행 단계 */}
-        <div className="matching-progress">
-          <div className="matching-progress-info">
-            <span>STEP 07</span>
-            <span>8단계 중 7단계</span>
-          </div>
-
-          <div className="matching-progress-track">
-            <div className="matching-progress-value" />
-          </div>
-        </div>
+      <StepProgress currentStep={5} />
 
         {/* 제목 */}
         <header className="matching-heading">
