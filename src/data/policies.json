@@ -1,0 +1,155 @@
+
+[
+  {
+    "id": "youth-rent-demo",
+    "name": "청년 월세 지원사업",
+    "category": "월세 지원",
+    "summary": "청년의 주거비 부담을 줄이기 위한 월세 지원사업 예시입니다.",
+    "description": "일정 연령과 소득 및 주거 조건을 충족하는 청년을 대상으로 월세를 지원하는 사업의 화면 구현 예시입니다.",
+    "supportAmount": "월 최대 20만 원",
+    "supportPeriod": "최대 12개월",
+    "applicationPeriod": "공고 확인 필요",
+    "target": "청년 무주택 임차 가구",
+    "applicationMethod": "온라인 신청",
+    "applicationUrl": "",
+    "officialUrl": "",
+    "source": "테스트용 가상 데이터",
+    "sourceDate": "테스트 데이터",
+    "documents": [
+      "주민등록등본",
+      "임대차계약서",
+      "소득 증빙 서류",
+      "월세 납부 증빙 자료"
+    ],
+    "criteria": {
+      "minAge": 19,
+      "maxAge": 39,
+      "incomeLevels": [
+        "under100",
+        "100to200",
+        "200to300"
+      ],
+      "housingStatus": "yes",
+      "seoulResident": [
+        "yes",
+        "moving"
+      ],
+      "householdTypes": [
+        "single"
+      ],
+      "residenceTypes": [
+        "monthly"
+      ],
+      "housingBenefit": "no"
+    },
+    "additionalChecks": [
+      "임대차계약서상 임차인 여부",
+      "보증금 및 월세 기준",
+      "세부 소득 산정 기준"
+    ]
+  },
+  {
+    "id": "youth-deposit-demo",
+    "name": "청년 임차보증금 이자지원",
+    "category": "금융 지원",
+    "summary": "청년의 임차보증금 대출 이자 부담을 완화하는 사업 예시입니다.",
+    "description": "청년의 주거 안정을 위해 임차보증금 관련 금융 지원을 제공하는 사업의 화면 구현 예시입니다.",
+    "supportAmount": "대출 이자 일부 지원",
+    "supportPeriod": "공고별 상이",
+    "applicationPeriod": "공고 확인 필요",
+    "target": "소득 및 연령 조건을 충족하는 청년",
+    "applicationMethod": "온라인 신청",
+    "applicationUrl": "",
+    "officialUrl": "",
+    "source": "테스트용 가상 데이터",
+    "sourceDate": "테스트 데이터",
+    "documents": [
+      "주민등록등본",
+      "임대차계약서",
+      "소득 증빙 서류",
+      "재직 또는 재학 증명서"
+    ],
+    "criteria": {
+      "minAge": 19,
+      "maxAge": 39,
+      "incomeLevels": [
+        "under100",
+        "100to200",
+        "200to300",
+        "300to400"
+      ],
+      "housingStatus": "yes",
+      "seoulResident": [
+        "yes",
+        "moving"
+      ],
+      "householdTypes": [
+        "single",
+        "couple"
+      ],
+      "residenceTypes": [
+        "monthly",
+        "jeonse"
+      ],
+      "housingBenefit": "no"
+    },
+    "additionalChecks": [
+      "보증금 한도",
+      "소득 산정 기준",
+      "대출 가능 여부",
+      "협약 금융기관 이용 조건"
+    ]
+  },
+  {
+    "id": "youth-housing-program-demo",
+    "name": "청년 주거안정 지원사업",
+    "category": "주거 지원",
+    "summary": "청년의 주거 안정을 위한 종합 지원사업 예시입니다.",
+    "description": "청년의 주거 환경 개선과 주거비 부담 완화를 위한 사업의 화면 구현 예시입니다.",
+    "supportAmount": "사업별 지원 내용 상이",
+    "supportPeriod": "공고별 상이",
+    "applicationPeriod": "공고 확인 필요",
+    "target": "청년 1인 가구 및 무주택 가구",
+    "applicationMethod": "공고별 신청 방법 확인",
+    "applicationUrl": "",
+    "officialUrl": "",
+    "source": "테스트용 가상 데이터",
+    "sourceDate": "테스트 데이터",
+    "documents": [
+      "주민등록등본",
+      "가족관계증명서",
+      "소득 증빙 서류"
+    ],
+    "criteria": {
+      "minAge": 19,
+      "maxAge": 39,
+      "incomeLevels": [
+        "under100",
+        "100to200",
+        "200to300",
+        "300to400",
+        "400to500"
+      ],
+      "housingStatus": "yes",
+      "seoulResident": [
+        "yes",
+        "moving"
+      ],
+      "householdTypes": [
+        "single",
+        "couple"
+      ],
+      "residenceTypes": [
+        "monthly",
+        "jeonse",
+        "family"
+      ],
+      "housingBenefit": "no"
+    },
+    "additionalChecks": [
+      "세대 구성 조건",
+      "사업별 중복 수혜 제한",
+      "실제 거주 및 임대차 관계"
+    ]
+  }
+]

@@ -1,0 +1,491 @@
+
+.housing-page {
+  min-height: 100vh;
+  padding: 48px 24px 80px;
+  background: #f3f6fa;
+}
+
+.housing-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.housing-progress {
+  margin-bottom: 42px;
+}
+
+.housing-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.housing-progress-info span:first-child {
+  color: #123c65;
+  font-weight: 700;
+}
+
+.housing-progress-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e2e8f0;
+}
+
+.housing-progress-value {
+  width: 62.5%;
+  height: 100%;
+  border-radius: inherit;
+  background: #1d527e;
+}
+
+.housing-heading {
+  margin-bottom: 36px;
+}
+
+.housing-eyebrow {
+  color: #1d527e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.housing-heading h1 {
+  margin: 12px 0;
+  color: #123c65;
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.35;
+}
+
+.housing-heading p {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.housing-section {
+  margin-bottom: 20px;
+  padding: 28px;
+  border: 1px solid #e7edf4;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.housing-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.housing-section-number {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: #1d527e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.housing-section-heading h2 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+.housing-section-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.housing-count {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #edf4fa;
+  color: #1d527e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.housing-region-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.housing-region-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 15px;
+  border: 1px solid #dce4ed;
+  border-radius: 30px;
+  background: #fff;
+  color: #475569;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.housing-region-chip:hover {
+  border-color: #1d527e;
+  color: #1d527e;
+}
+
+.housing-region-chip.selected {
+  border-color: #1d527e;
+  background: #edf4fa;
+  color: #123c65;
+  font-weight: 700;
+}
+
+.chip-remove {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.housing-help {
+  margin: 14px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.housing-undecided {
+  padding: 20px 24px;
+  border-color: #dce8f2;
+  background: #f8fbfe;
+}
+
+.housing-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.housing-checkbox-label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.custom-checkbox {
+  display: flex;
+  flex: 0 0 21px;
+  width: 21px;
+  height: 21px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.housing-checkbox-label input:checked + .custom-checkbox {
+  border-color: #1d527e;
+  background: #1d527e;
+}
+
+.housing-checkbox-label input:checked + .custom-checkbox::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+}
+
+.housing-checkbox-label strong,
+.housing-checkbox-label small {
+  display: block;
+}
+
+.housing-checkbox-label strong {
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.housing-checkbox-label small {
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.housing-option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.housing-option-card,
+.housing-contract-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 90px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.housing-option-card strong,
+.housing-contract-card strong {
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.housing-option-card span,
+.housing-contract-card span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.housing-option-card:hover,
+.housing-contract-card:hover {
+  border-color: #1d527e;
+}
+
+.housing-option-card.active,
+.housing-contract-card.active {
+  border: 1.5px solid #1d527e;
+  background: #f0f6fb;
+}
+
+.housing-option-card.active strong,
+.housing-contract-card.active strong {
+  color: #123c65;
+}
+
+.housing-subsection {
+  margin-top: 30px;
+}
+
+.housing-subsection h3 {
+  margin: 0 0 14px;
+  color: #334155;
+  font-size: 15px;
+}
+
+.housing-contract-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.housing-contract-card {
+  min-height: 80px;
+  padding: 16px;
+}
+
+.housing-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.housing-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.housing-field > span {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.housing-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #dce4ed;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.housing-input-wrap:focus-within {
+  border-color: #1d527e;
+}
+
+.housing-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.housing-input-wrap input::placeholder {
+  color: #a0acba;
+}
+
+.housing-input-wrap > span {
+  flex-shrink: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.section-disabled {
+  opacity: 0.45;
+}
+
+.section-disabled button,
+.section-disabled input {
+  cursor: not-allowed;
+}
+
+.housing-notice {
+  margin: 24px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: #eaf1f7;
+}
+
+.housing-notice strong {
+  color: #123c65;
+  font-size: 14px;
+}
+
+.housing-notice p {
+  margin: 8px 0 0;
+  color: #52677b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.housing-error {
+  margin: 12px 0;
+  color: #dc4b4b;
+  font-size: 13px;
+}
+
+.housing-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.housing-back-button,
+.housing-next-button {
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.housing-back-button {
+  border: 1px solid #dce4ed;
+  background: #fff;
+  color: #475569;
+}
+
+.housing-next-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 180px;
+  border: none;
+  background: #123c65;
+  color: #fff;
+}
+
+.housing-next-button:hover {
+  background: #1d527e;
+}
+
+@media (max-width: 768px) {
+  .housing-page {
+    padding: 32px 18px 60px;
+  }
+
+  .housing-section {
+    padding: 22px;
+  }
+
+  .housing-budget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .housing-field {
+    display: grid;
+    grid-template-columns: 75px minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .housing-page {
+    padding: 24px 14px 48px;
+  }
+
+  .housing-heading {
+    margin-bottom: 26px;
+  }
+
+  .housing-heading p {
+    font-size: 14px;
+  }
+
+  .housing-section {
+    padding: 18px;
+    border-radius: 13px;
+  }
+
+  .housing-section-heading h2 {
+    font-size: 18px;
+  }
+
+  .housing-option-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .housing-option-card {
+    min-height: 82px;
+    padding: 14px;
+  }
+
+  .housing-contract-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .housing-contract-card {
+    min-height: 65px;
+  }
+
+  .housing-actions {
+    position: sticky;
+    bottom: 0;
+    padding: 12px 0;
+    background: #f3f6fa;
+  }
+
+  .housing-back-button {
+    padding: 0 16px;
+  }
+
+  .housing-next-button {
+    flex: 1;
+    min-width: 0;
+  }
+}

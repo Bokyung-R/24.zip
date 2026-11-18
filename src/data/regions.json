@@ -1,0 +1,139 @@
+
+[
+  {
+    "id": "dobong",
+    "name": "도봉구",
+    "subtitle": "합리적인 주거비를 찾는 분",
+    "description": "상대적으로 주거비 부담이 낮은 지역을 찾는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 92,
+      "transport": 65,
+      "convenience": 70,
+      "safety": 78,
+      "environment": 88
+    },
+    "sampleDeposit": 1500,
+    "sampleRent": 45,
+    "tags": ["주거비", "녹지 환경"],
+    "welfarePreview": "청년 월세 지원 등 주거지원 정책 확인"
+  },
+  {
+    "id": "nowon",
+    "name": "노원구",
+    "subtitle": "생활 편의와 주거 환경의 균형",
+    "description": "주거 환경과 생활 편의성을 함께 고려하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 82,
+      "transport": 78,
+      "convenience": 88,
+      "safety": 82,
+      "environment": 86
+    },
+    "sampleDeposit": 2000,
+    "sampleRent": 55,
+    "tags": ["생활 편의", "주거 환경"],
+    "welfarePreview": "청년 주거 관련 지원사업 확인"
+  },
+  {
+    "id": "gwanak",
+    "name": "관악구",
+    "subtitle": "대중교통과 청년 생활권",
+    "description": "대중교통과 다양한 생활 편의시설을 중요하게 생각하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 75,
+      "transport": 90,
+      "convenience": 90,
+      "safety": 68,
+      "environment": 65
+    },
+    "sampleDeposit": 2000,
+    "sampleRent": 60,
+    "tags": ["대중교통", "생활 편의"],
+    "welfarePreview": "청년 주거복지 지원사업 확인"
+  },
+  {
+    "id": "eunpyeong",
+    "name": "은평구",
+    "subtitle": "주거비와 쾌적한 환경",
+    "description": "주거비와 주변 환경을 함께 고려하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 85,
+      "transport": 72,
+      "convenience": 76,
+      "safety": 80,
+      "environment": 90
+    },
+    "sampleDeposit": 1800,
+    "sampleRent": 50,
+    "tags": ["쾌적한 환경", "주거비"],
+    "welfarePreview": "청년 주거지원 정책 확인"
+  },
+  {
+    "id": "seongbuk",
+    "name": "성북구",
+    "subtitle": "교통과 생활 편의의 균형",
+    "description": "교통과 생활 편의시설을 균형 있게 고려하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 78,
+      "transport": 84,
+      "convenience": 85,
+      "safety": 77,
+      "environment": 80
+    },
+    "sampleDeposit": 2200,
+    "sampleRent": 58,
+    "tags": ["교통", "생활 편의"],
+    "welfarePreview": "청년 주거복지 정책 확인"
+  },
+  {
+    "id": "gangseo",
+    "name": "강서구",
+    "subtitle": "교통 접근성과 생활 인프라",
+    "description": "교통 접근성과 일상 편의시설을 중요하게 생각하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 80,
+      "transport": 86,
+      "convenience": 83,
+      "safety": 75,
+      "environment": 76
+    },
+    "sampleDeposit": 2000,
+    "sampleRent": 55,
+    "tags": ["교통 접근성", "생활 인프라"],
+    "welfarePreview": "청년 주거지원 정책 확인"
+  },
+  {
+    "id": "guro",
+    "name": "구로구",
+    "subtitle": "합리적인 비용과 교통",
+    "description": "주거비와 대중교통 접근성을 함께 고려하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 86,
+      "transport": 82,
+      "convenience": 79,
+      "safety": 72,
+      "environment": 70
+    },
+    "sampleDeposit": 1700,
+    "sampleRent": 48,
+    "tags": ["합리적인 주거비", "교통"],
+    "welfarePreview": "청년 주거 관련 지원사업 확인"
+  },
+  {
+    "id": "gangbuk",
+    "name": "강북구",
+    "subtitle": "주거비와 자연환경",
+    "description": "주거비와 녹지 환경을 중요하게 고려하는 상황을 가정한 추천 데이터입니다.",
+    "scores": {
+      "housingCost": 90,
+      "transport": 68,
+      "convenience": 72,
+      "safety": 76,
+      "environment": 91
+    },
+    "sampleDeposit": 1500,
+    "sampleRent": 43,
+    "tags": ["주거비", "자연환경"],
+    "welfarePreview": "청년 주거복지 정책 확인"
+  }
+]
